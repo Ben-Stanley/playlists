@@ -1,20 +1,17 @@
-function Input(props: InputProps) {
+import { ComponentProps } from "react";
+
+import { cn } from "@/lib/utils";
+
+function Input({className, type, name, ...props}: ComponentProps<"input">) {
   return (
     <input
-      className="input"
-      type={props.type}
-      placeholder={props.placeholder}
-      value={props.value}
-      onChange={props.onChange}
+      type={type}
+      name={name}
+      id={name}
+      className={cn("px-4 py-2 border border-gray-500 rounded bg-input focus:border-primary", className)}
+      { ...props }
     />
   );
-}
-
-export interface InputProps {
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default Input;
